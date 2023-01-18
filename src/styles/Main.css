@@ -1,0 +1,24 @@
+#home-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-image: url('../hero-img.jpg');
+    background-repeat: none;
+    background-position: center;
+    opacity: 0.8;
+}
+#main-text {
+    color: white;
+    font-weight: 900;
+    font-size: 54px;
+}
+
+#cta-btn {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+}

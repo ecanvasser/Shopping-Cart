@@ -1,8 +1,13 @@
 import Header from "./Header"
+import Main from './Main.js'
+import '../styles/Home.css'
 
 const Home = () => {
     return (
-        <Header />
+        <div className="home">
+            <Header />
+            <Main />
+        </div>
     )
 }
 
