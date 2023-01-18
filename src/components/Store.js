@@ -1,5 +1,5 @@
 import "../styles/Store.css";
-import Header from "./Header";
+import Header from "../Header";
 
 const Store = () => {
   return <Header />;
