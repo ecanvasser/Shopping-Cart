@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "./Header";
 import Main from "./Main.js";
 import "../styles/Home.css";
 

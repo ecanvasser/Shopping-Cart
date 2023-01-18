@@ -1,5 +1,5 @@
 import { AiOutlineShoppingCart as Cart} from "react-icons/ai";
-import styles from "../src/index.css";
+import styles from "../index.css"
 
 const Header = () => {
   return (
