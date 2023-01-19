@@ -8,8 +8,8 @@ const ProdDetailInfo = ({ id }) => {
 
   return (
     <div id="prod-details" className="grid grid-cols-2">
-      <div id="prod-img-container" className="">
-        <img src={target.image} />
+      <div id="prod-img-container" className="flex justify-center items-center">
+        <img src={target.image} className="w-10/12 h-4/5" />
       </div>
       <div id="prod-text-container" className="flex flex-col items-center justify-center">
         <div id="prod-text" className="flex flex-col gap-5">
