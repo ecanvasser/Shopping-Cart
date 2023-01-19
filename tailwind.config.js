@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero': "url('../src/images/hero-img.jpg')"
+        hero: "url('../src/images/hero-img.jpg')",
+      },
+      gridTemplateColumns: {
+        store: "repeat(auto-fit, minmax(275px, max-content))",
       }
     },
   },
