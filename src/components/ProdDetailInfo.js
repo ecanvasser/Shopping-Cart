@@ -11,7 +11,7 @@ const ProdDetailInfo = ({ id }) => {
       <div id="prod-img-container" className="">
         <img src={target.image} />
       </div>
-      <div id="prod-text-container" className="pt-52 flex flex-col items-center">
+      <div id="prod-text-container" className="flex flex-col items-center justify-center">
         <div id="prod-text" className="flex flex-col gap-5">
           <div id="prod-name" className="font-bold text-5xl">
             {target.name}
