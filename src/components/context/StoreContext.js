@@ -13,14 +13,14 @@ export const StoreProvider = ({ children }) => {
     },
     {
       id: 1,
-      name: "Miscela",
+      name: "Miscela Beans",
       price: "$12.99",
       image: require("../../images/miscela.webp"),
       quantity: 0,
     },
     {
       id: 2,
-      name: "Perfecto",
+      name: "Perfecto Beans",
       price: "$12.99",
       image: require("../../images/perfect-esp.webp"),
       quantity: 0,
