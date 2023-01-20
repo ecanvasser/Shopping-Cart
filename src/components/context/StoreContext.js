@@ -67,11 +67,21 @@ export const StoreProvider = ({ children }) => {
     setProducts((prev) => [...prev, (prev[index].quantity = e.target.value)]);
   };
 
+  const handleButton = (e) => {
+    let index = e.target.id;
+    if (e.target.innerText === '+') {
+      setProducts((prev) => [...prev, (prev[index].quantity += 1)]);
+      return
+    }
+    setProducts((prev) => [...prev, (prev[index].quantity -= 1)]);
+  }
+
   return (
     <StoreContext.Provider
       value={{
         products,
         handleInput,
+        handleButton,
       }}
     >
       {children}
