@@ -6,9 +6,9 @@ const Counter = ({ id }) => {
   
     return (
     <div id="button-container" className="flex pt-10 gap-1">
-      <button id={id} className="px-3 bg-black text-white" onClick={handleButton}>+</button>
-      <input id={id} type="text" value={products[id].quantity} onChange={handleInput} className="text-center border-black border-2 w-12"/>
       <button id={id} className="px-3 bg-black text-white" onClick={handleButton}>-</button>
+      <input id={id} type="text" value={products[id].quantity} onChange={handleInput} className="text-center border-black border-2 w-12"/>
+      <button id={id} className="px-3 bg-black text-white" onClick={handleButton}>+</button>
     </div>
   );
 };
