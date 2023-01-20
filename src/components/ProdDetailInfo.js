@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { StoreProvider } from "./context/StoreContext";
 import StoreContext from "./context/StoreContext";
 import Counter from "./Counter";
 
@@ -11,13 +12,18 @@ const ProdDetailInfo = ({ id }) => {
       <div id="prod-img-container" className="flex justify-center items-center">
         <img src={target.image} className="w-10/12 h-4/5" />
       </div>
-      <div id="prod-text-container" className="flex flex-col items-center justify-center">
+      <div
+        id="prod-text-container"
+        className="flex flex-col items-center justify-center"
+      >
         <div id="prod-text" className="flex flex-col gap-5">
           <div id="prod-name" className="font-bold text-5xl">
             {target.name}
           </div>
           <div id="prod-price">{target.price}</div>
-          <Counter count={target.quantity} />
+          <StoreProvider>
+            <Counter id={id} />
+          </StoreProvider>
           <button className="w-max mt-3 py-2 px-3 rounded-xl bg-black text-white">
             Add To Cart
           </button>

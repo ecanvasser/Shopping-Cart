@@ -62,10 +62,16 @@ export const StoreProvider = ({ children }) => {
     },
   ]);
 
+  const handleInput = (e) => {
+    let index = e.target.id;
+    setProducts((prev) => [...prev, (prev[index].quantity = e.target.value)]);
+  };
+
   return (
     <StoreContext.Provider
       value={{
         products,
+        handleInput,
       }}
     >
       {children}
