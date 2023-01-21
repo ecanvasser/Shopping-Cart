@@ -61,9 +61,11 @@ export const StoreProvider = ({ children }) => {
       quantity: 0,
     },
   ]);
-
+  
   useEffect(() => {
-    setProducts(JSON.parse(localStorage.getItem('products')))
+    if (JSON.parse(localStorage.getItem('products'))) {
+      setProducts(JSON.parse(localStorage.getItem('products')))
+    }
   }, [])
 
   const handleButton = (e) => {
