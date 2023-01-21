@@ -79,7 +79,6 @@ export const StoreProvider = ({ children }) => {
         }
       });
       setProducts(newQuantity);
-      localStorage.setItem("products", JSON.stringify(newQuantity));
     } else {
       const newQuantity = products.map((item) => {
         if (item.id !== index) {
@@ -89,7 +88,6 @@ export const StoreProvider = ({ children }) => {
         }
       });
       setProducts(newQuantity);
-      localStorage.setItem("products", JSON.stringify(newQuantity));
     }
   };
 
