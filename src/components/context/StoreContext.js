@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const StoreContext = createContext({});
 
@@ -62,25 +62,39 @@ export const StoreProvider = ({ children }) => {
     },
   ]);
 
-  const handleInput = (e) => {
-    let index = e.target.id;
-    setProducts((prev) => [...prev, (prev[index].quantity = e.target.value)]);
-  };
+  useEffect(() => {
+    setProducts(JSON.parse(localStorage.getItem('products')))
+  }, [])
 
   const handleButton = (e) => {
-    let index = e.target.id;
-    if (e.target.innerText === '+') {
-      setProducts((prev) => [...prev, (prev[index].quantity += 1)]);
-      return
+    let index = parseInt(e.target.id);
+    if (e.target.innerText === "+") {
+      const newQuantity = products.map((item) => {
+        if (item.id !== index) {
+          return item;
+        } else {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+      });
+      setProducts(newQuantity);
+      localStorage.setItem("products", JSON.stringify(newQuantity));
+    } else {
+      const newQuantity = products.map((item) => {
+        if (item.id !== index) {
+          return item;
+        } else {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+      });
+      setProducts(newQuantity);
+      localStorage.setItem("products", JSON.stringify(newQuantity));
     }
-    setProducts((prev) => [...prev, (prev[index].quantity -= 1)]);
-  }
+  };
 
   return (
     <StoreContext.Provider
       value={{
         products,
-        handleInput,
         handleButton,
       }}
     >
