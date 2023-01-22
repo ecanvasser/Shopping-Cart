@@ -9,11 +9,21 @@ export const CartProvider = ({ children }) => {
   const { products } = useContext(StoreContext);
 
   const addItems = (e) => {
-    setCartItems((prevCart) =>
-      !prevCart.includes(products[e.target.id])
-        ? cartItems.concat(products[e.target.id])
-        : prevCart
-    );
+    // If cart already has items, find match and update quantity.
+    // Else, add new item to cartItems
+    if (cartItems.length > 0) {
+      const updatedArray = cartItems.map((item) => {
+        if (item.name === products[e.target.id].name) {
+          return {
+            ...item,
+            quantity: item.quantity + products[e.target.id].quantity,
+          };
+        }
+      });
+      setCartItems(updatedArray)
+    } else {
+      setCartItems(cartItems.concat(products[e.target.id]));
+    }
   };
 
   return (
