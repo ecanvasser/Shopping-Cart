@@ -9,7 +9,7 @@ const Header = () => {
       <ul id="nav-links" className="flex gap-10">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/store">Shop</Link></li>
-        <li id="cart-icon" className="pt-1"><Cart/></li>
+        <li id="cart-icon" className="pt-1"><Link to="/cart"><Cart/></Link></li>
       </ul>
     </header>
   );
