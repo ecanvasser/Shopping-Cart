@@ -6,16 +6,21 @@ import Store from "./components/Store";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import { CartProvider } from "./components/context/CartContext";
+import { StoreProvider } from "./components/context/StoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route index element={<Home />} />
-      <Route path="/store" exact element={<Store />} />
-      <Route path="/store/:id" element={<ProductDetails />}/>
-      <Route path="/cart" element={<Cart />}/>
-    </Routes>
+    <StoreProvider>
+      <CartProvider>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/store" exact element={<Store />} />
+          <Route path="/store/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </CartProvider>
+    </StoreProvider>
   </BrowserRouter>
 );

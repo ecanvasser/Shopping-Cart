@@ -1,5 +1,4 @@
 import CartQuantity from "./CartQuantity";
-import { CartProvider } from "./context/CartContext";
 
 const CartItem = ({ product }) => {
   return (
@@ -12,9 +11,7 @@ const CartItem = ({ product }) => {
           {product.name}
         </div>
         <div id="product-price">{product.price}</div>
-        <CartProvider>
-          <CartQuantity id={product.id} product={product} />
-        </CartProvider>
+        <CartQuantity id={product.id} product={product} />
       </div>
     </div>
   );

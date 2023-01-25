@@ -1,7 +1,6 @@
 import CartContext from "./context/CartContext";
 import CartItem from "./CartItem";
 import OrderTotal from "./OrderTotal";
-import { CartProvider } from "./context/CartContext";
 import { useContext } from "react";
 
 const CartList = () => {
@@ -14,9 +13,7 @@ const CartList = () => {
           return <CartItem key={index} product={item} />;
         })}
       </div>
-      <CartProvider>
-        <OrderTotal />
-      </CartProvider>
+      <OrderTotal />
     </div>
   );
 };

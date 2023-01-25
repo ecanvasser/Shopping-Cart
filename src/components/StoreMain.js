@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import StoreContext from "./context/StoreContext";
-import { StoreProvider } from "./context/StoreContext";
 import StoreCard from "./StoreCard";
 import { Link } from "react-router-dom";
 

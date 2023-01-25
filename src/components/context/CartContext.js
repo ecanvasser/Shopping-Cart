@@ -4,7 +4,7 @@ import StoreContext from "./StoreContext";
 
 const CartContext = createContext({});
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({children}) => {
   const [cartItems, setCartItems] = useState([]);
   const { products } = useContext(StoreContext);
 

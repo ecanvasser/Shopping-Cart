@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
-import { StoreProvider } from "./context/StoreContext";
 import StoreContext from "./context/StoreContext";
-import { CartProvider } from "./context/CartContext";
 import Counter from "./Counter";
 import AddToCart from "./AddToCart";
 
@@ -23,12 +21,8 @@ const ProdDetailInfo = ({ id }) => {
             {target.name}
           </div>
           <div id="prod-price">{target.price}</div>
-          <StoreProvider>
-            <Counter id={id} />
-            <CartProvider>
-              <AddToCart id={id}/>
-            </CartProvider>
-          </StoreProvider>
+          <Counter id={id} />
+          <AddToCart id={id} />
         </div>
       </div>
     </div>
