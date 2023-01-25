@@ -17,13 +17,13 @@ export const CartProvider = ({children}) => {
   const addItems = (e) => {
     const clone = [...cartItems].concat(products[e.target.id]);
     localStorage.setItem("cartItems", JSON.stringify(clone));
-    setCartItems(cartItems.concat(products[e.target.id]));
+    setCartItems(cartItems.concat({...products[e.target.id], subtotal: products[e.target.id].quantity * products[e.target.id].price}));
   };
 
   const incrementItem = (e) => {
     const newArray = cartItems.map((item) => {
       if (item.id === parseInt(e.target.id)) {
-        return {...item, quantity: item.quantity + 1}
+        return {...item, quantity: item.quantity + 1, subtotal: parseFloat(((item.quantity + 1) * item.price).toFixed(2))}
       } else {
         return item
       }
@@ -35,7 +35,7 @@ export const CartProvider = ({children}) => {
   const decrementItem = (e) => {
     const newArray = cartItems.map((item) => {
       if (item.id === parseInt(e.target.id)) {
-        return {...item, quantity: item.quantity - 1}
+        return {...item, quantity: item.quantity - 1, subtotal: parseFloat(((item.quantity - 1) * item.price).toFixed(2))}
       } else {
         return item
       }
