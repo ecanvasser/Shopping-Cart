@@ -1,17 +1,22 @@
 import CartContext from "./context/CartContext";
 import CartItem from "./CartItem";
+import OrderTotal from "./OrderTotal";
+import { CartProvider } from "./context/CartContext";
 import { useContext } from "react";
 
 const CartList = () => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <div id="cartList" className="pt-16">
-      <div id="cartList-container" className="flex flex-col gap-10">
+    <div id="cartList" className="grid grid-cols-[1.15fr_0.85fr] pt-16 pb-24">
+      <div id="cartList-container" className="grid grid-cols-1 gap-10">
         {cartItems.map((item, index) => {
           return <CartItem key={index} product={item} />;
         })}
       </div>
+      <CartProvider>
+        <OrderTotal />
+      </CartProvider>
     </div>
   );
 };
