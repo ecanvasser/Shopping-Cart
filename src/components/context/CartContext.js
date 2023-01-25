@@ -65,11 +65,37 @@ export const CartProvider = ({ children }) => {
     // }
   };
 
+  const incrementItem = (e) => {
+    const newArray = cartItems.map((item) => {
+      if (item.id === parseInt(e.target.id)) {
+        return {...item, quantity: item.quantity + 1}
+      } else {
+        return item
+      }
+    })
+    localStorage.setItem("cartItems", JSON.stringify(newArray));
+    setCartItems(newArray)
+  }
+
+  const decrementItem = (e) => {
+    const newArray = cartItems.map((item) => {
+      if (item.id === parseInt(e.target.id)) {
+        return {...item, quantity: item.quantity - 1}
+      } else {
+        return item
+      }
+    })
+    localStorage.setItem("cartItems", JSON.stringify(newArray));
+    setCartItems(newArray)
+  }
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         addItems,
+        incrementItem,
+        decrementItem
       }}
     >
       {children}
