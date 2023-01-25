@@ -6,6 +6,7 @@ const CartContext = createContext({});
 
 export const CartProvider = ({children}) => {
   const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState();
   const { products } = useContext(StoreContext);
 
   useEffect(() => {
@@ -13,6 +14,11 @@ export const CartProvider = ({children}) => {
       setCartItems(JSON.parse(localStorage.getItem("cartItems")));
     }
   }, []);
+
+  useEffect(() => {
+    const newTotal = cartItems.reduce((total, item) => total + item.subtotal, 0)
+    setTotal((newTotal).toFixed(2))
+  }, [cartItems])
 
   const addItems = (e) => {
     const clone = [...cartItems].concat(products[e.target.id]);
@@ -48,6 +54,7 @@ export const CartProvider = ({children}) => {
     <CartContext.Provider
       value={{
         cartItems,
+        total,
         addItems,
         incrementItem,
         decrementItem
