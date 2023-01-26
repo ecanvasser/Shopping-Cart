@@ -1,8 +1,10 @@
 import CartQuantity from "./CartQuantity";
+import { CiSquareRemove } from "react-icons/ci";
+import { IconContext } from "react-icons";
 
 const CartItem = ({ product }) => {
   return (
-    <div id="product" className="grid grid-cols-2 gap-14">
+    <div id="product" className="grid grid-cols-2 gap-14 relative">
       <div id="product-img" className="flex justify-end">
         <img src={product.image} alt="" className="w-1/2" />
       </div>
@@ -13,6 +15,11 @@ const CartItem = ({ product }) => {
         <div id="product-price">{product.price}</div>
         <CartQuantity id={product.id} product={product} />
       </div>
+      <IconContext.Provider value={{size: "1.5em"}}>
+        <button id="remove-icon" className="absolute top-2/4 right-14">
+          <CiSquareRemove />
+        </button>
+      </IconContext.Provider>
     </div>
   );
 };
