@@ -1,5 +1,6 @@
 import CartContext from "./context/CartContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const OrderDetail = () => {
   const { cartItems, total } = useContext(CartContext);
@@ -27,7 +28,7 @@ const OrderDetail = () => {
             ${total}
           </div>
         </div>
-        <button className="bg-black text-white p-2 mt-5 w-7/12">Submit Order</button>
+        <Link to="/submitted" className="flex justify-center bg-black text-white p-2 mt-5 w-7/12">Submit Order</Link>
       </div>
     </>
   );
