@@ -50,6 +50,12 @@ export const CartProvider = ({children}) => {
     setCartItems(newArray)
   }
 
+  const deleteItem = (e) => {
+    const filteredArray = cartItems.filter(item => item.id !== parseInt(e.target.id))
+    localStorage.setItem("cartItems", JSON.stringify(filteredArray));
+    setCartItems(filteredArray);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -57,7 +63,8 @@ export const CartProvider = ({children}) => {
         total,
         addItems,
         incrementItem,
-        decrementItem
+        decrementItem,
+        deleteItem
       }}
     >
       {children}
