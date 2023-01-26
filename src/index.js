@@ -5,6 +5,7 @@ import Home from "./components/Home.js";
 import Store from "./components/Store";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
+import SubmitOrder from "./components/SubmitOrder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./components/context/CartContext";
 import { StoreProvider } from "./components/context/StoreContext";
@@ -19,6 +20,7 @@ root.render(
           <Route path="/store" exact element={<Store />} />
           <Route path="/store/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/submitted" element={<SubmitOrder />} />
         </Routes>
       </CartProvider>
     </StoreProvider>
