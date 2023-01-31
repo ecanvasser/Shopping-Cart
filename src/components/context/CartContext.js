@@ -21,9 +21,26 @@ export const CartProvider = ({children}) => {
   }, [cartItems])
 
   const addItems = (e) => {
-    const clone = [...cartItems].concat(products[e.target.id]);
-    localStorage.setItem("cartItems", JSON.stringify(clone));
-    setCartItems(cartItems.concat({...products[e.target.id], subtotal: products[e.target.id].quantity * products[e.target.id].price}));
+    const productId = e.target.id;
+    const isProductAlreadyInCart = cartItems.findIndex((cartItem) => cartItem.id.toString() === productId) === -1 ? false : true;
+    let updatedCartItems;
+    
+    if(isProductAlreadyInCart){
+      updatedCartItems = cartItems.map((cartItem)=>{
+          if(productId === cartItem.id.toString()){
+            return {...products[productId], subtotal: products[productId].quantity * products[productId].price}
+          }
+          else{
+            return cartItem
+          }
+        })
+    }
+    else{
+      updatedCartItems = cartItems.concat({...products[productId], subtotal: products[productId].quantity * products[productId].price})
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    setCartItems(updatedCartItems)
   };
 
   const incrementItem = (e) => {
