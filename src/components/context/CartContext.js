@@ -35,7 +35,9 @@ export const CartProvider = ({children}) => {
       else{
         updatedCartItems = cartItems.map((cartItem)=>{
           if(productId === cartItem.id.toString()){
-            return {...products[productId], subtotal: products[productId].quantity * products[productId].price}
+            return {...products[productId], 
+              quantity: cartItem.quantity + products[productId].quantity, 
+              subtotal: (products[productId].quantity * products[productId].price) + cartItem.subtotal}
           }
           else{
             return cartItem
