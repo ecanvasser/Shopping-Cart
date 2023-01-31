@@ -22,11 +22,18 @@ export const CartProvider = ({children}) => {
 
   const addItems = (e) => {
     const productId = e.target.id;
-    const isProductAlreadyInCart = cartItems.findIndex((cartItem) => cartItem.id.toString() === productId) === -1 ? false : true;
+    const cartItemIndex = cartItems.findIndex((cartItem) => cartItem.id.toString() === productId)
+    const isProductAlreadyInCart = cartItemIndex === -1 ? false : true;
     let updatedCartItems;
-    
+
     if(isProductAlreadyInCart){
-      updatedCartItems = cartItems.map((cartItem)=>{
+      if(products[productId].quantity === 0){
+        updatedCartItems = cartItems.filter((cartItem)=>{
+          return cartItem.id.toString() !== productId
+        })
+      }
+      else{
+        updatedCartItems = cartItems.map((cartItem)=>{
           if(productId === cartItem.id.toString()){
             return {...products[productId], subtotal: products[productId].quantity * products[productId].price}
           }
@@ -34,8 +41,12 @@ export const CartProvider = ({children}) => {
             return cartItem
           }
         })
+      }
     }
     else{
+      if(products[productId].quantity === 0){
+        return;
+      }
       updatedCartItems = cartItems.concat({...products[productId], subtotal: products[productId].quantity * products[productId].price})
     }
 
